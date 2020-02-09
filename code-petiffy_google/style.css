@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+pre {
+  white-space: pre-wrap;
+  font-family: monospace !important;
+  /* Since CSS 2.1 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* Internet Explorer 5.5+ */
+  word-break: keep-all;
+  font-size: 1.5em;
+}
+
+li.L0,
+li.L1,
+li.L2,
+li.L3,
+li.L5,
+li.L6,
+li.L7,
+li.L8 {
+  list-style-type: decimal !important;
+}
+
+.codeouter {
+  margin: 1.8em 0em;
+}
+
+.codeouter h2 {
+  font-size: 2em;
+  padding: .5em 0em;
+  text-align: center;
+}
+
+.codeouter .codeinner {
+  padding: 10px 0px 10px 40px;
+  background-color: #333;
+}
+/*# sourceMappingURL=style.css.map */
