@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.card{
+            height:100vh;
+            
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #E73C7E; 
+            background: linear-gradient(-45deg, #EE7752, #E73C7E, #6B60B2, #372C7C) !important;
+             background-size: 400% 400% !important; 
+            animation: gradient 15s ease infinite !important;
+        }
+        @keyframes gradient {
+            0%{
+                background-position:0% 50%;
+                opacity:1;
+            }
+            50%{
+                background-position:100% 50%;
+                opacity: 0.8;
+            }
+        
+            100%{
+                background-position:0% 50%;
+                opacity:1;
+            }
+        }
+    div.card{
+        text-align: center;
+        background-color: transparent;
+        border:1px solid white;
+        padding:3em;
+    }
+    div h2{
+        font-size:32px;
+        font-weight:700;
+        color: white;
+    }
+    div button{
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+        outline: none;
+        border: none;
+        font-size:20px;
+        padding:1em 2.9em;
+        color:red;
+        background-color:white;
+        border:5px solid rgb(255, 0, 0);
+        transition: .5s ease-in;
+        border-radius:35px;
+    }
+    button:hover{
+        color: white;
+      background-color: red;  
+    }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Check why to choose us</h2>
+        <button>Yes</button>
+    </div>
+</body>
+</html>
