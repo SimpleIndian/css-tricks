@@ -5419,7 +5419,10 @@ var _workboxRouting = require("workbox-routing");
 var _workboxStrategies = require("workbox-strategies");
 
 (0, _workboxPrecaching.precacheAndRoute)(self.__WB_MANIFEST);
-},{"workbox-precaching":"node_modules/workbox-precaching/index.mjs","workbox-routing":"node_modules/workbox-routing/index.mjs","workbox-strategies":"node_modules/workbox-strategies/index.mjs"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+(0, _workboxRouting.registerRoute)(/https:\/\/cdnjs\.cloudflare\.com/, new _workboxStrategies.NetworkFirst({
+  cacheName: 'cdn-asset'
+}));
+},{"workbox-precaching":"node_modules/workbox-precaching/index.mjs","workbox-routing":"node_modules/workbox-routing/index.mjs","workbox-strategies":"node_modules/workbox-strategies/index.mjs"}],"C:/Users/souvik/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -5447,7 +5450,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "11569" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "11184" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -5623,4 +5626,4 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","sw-src.js"], null)
+},{}]},{},["C:/Users/souvik/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","sw-src.js"], null)

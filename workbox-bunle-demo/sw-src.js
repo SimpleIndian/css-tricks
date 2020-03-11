@@ -3,4 +3,10 @@ import {registerRoute} from 'workbox-routing';
 import {CacheFirst, StaleWhileRevalidate,NetworkFirst} from 'workbox-strategies';
 import {precacheAndRoute} from 'workbox-precaching';
 
-precacheAndRoute(self.__WB_MANIFEST);
+precacheAndRoute(self.__WB_MANIFEST); 
+registerRoute(
+    /https:\/\/cdnjs\.cloudflare\.com/,
+    new NetworkFirst({
+        cacheName: 'cdn-asset',
+      })
+);
