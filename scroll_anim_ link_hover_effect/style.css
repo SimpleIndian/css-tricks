@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 150vh;
+  background-color: #181818;
+}
+
+body .content {
+  color: white;
+  width: 50%;
+  margin: auto;
+}
+
+body .content h2 {
+  color: white;
+  margin: 18px 0;
+  font-size: 2em;
+}
+
+body .content h4 {
+  color: white;
+  margin: 15px 0;
+  font-size: 1.8em;
+}
+
+body .content p {
+  font-size: 20px;
+}
+
+.ar-link {
+  color: yellow;
+  text-decoration: none;
+  position: relative;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+
+.ar-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 100%;
+  height: 15%;
+  background-color: #fffb00;
+  border-radius: 5px;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  opacity: 0;
+}
+
+.ar-link:hover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 15%;
+  background-color: #fffb00;
+  opacity: 1;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+/*# sourceMappingURL=style.css.map */
