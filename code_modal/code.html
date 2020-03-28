@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/venobox/1.8.6/venobox.min.css">
+    <style>
+        div.vbox-title {
+            font-size: 25px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        div.vbox-close {
+            font-size: 32px;
+            font-weight: 900;
+            /* right:100px for close icon placement adjustment */
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <a class="venobox_custom" data-title="Callable Class in Flutter" data-vbtype="iframe"
+            href="https://dartpad.dev/embed-inline.html?id=5d70bc1889d055c7a18d35d77874af88&theme=dark"">iFrame</a>   
+        <a class=" venobox" data-vbtype="iframe" href="http://example.com/">iFrame</a>
+
+        <a class="venobox_custom_link" href="HALDI.jpg"><img src="HALDI.jpg" alt="imagealt" width="200px" height="200px" /></a>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/venobox/1.8.6/venobox.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.venobox').venobox();
+        });
+        $('.venobox_custom').venobox({
+            framewidth: '100%', // default: ''
+            frameheight: '40em', // default: ''
+            border: '0', // default: '0'
+            bgcolor: 'black', // default: '#fff'
+            titleattr: 'data-title', // default: 'title'
+            numeratio: false, // default: false
+            infinigall: false, // default: false
+            closeBackground: '#0000',
+            share: [], // default: []
+            spinner: 'rotating-plane',
+            spinColor: '#ffe606',
+            overlayClose: false,
+            titleBackground: '#fff7ae',
+            titleColor: ' #585004',
+            closeColor: ' #585004',
+            overlayColor: "#fff7afbb"
+        });
+        $('.venobox_custom_link').venobox({
+            framewidth: '', // default: ''
+            frameheight: '', // default: ''
+            border: '0', // default: '0'
+            bgcolor: 'black', // default: '#fff'
+            titleattr: 'data-title', // default: 'title'
+            numeratio: false, // default: false
+            infinigall: false, // default: false
+            closeBackground: '#0000',
+            share: [], // default: []
+            spinner: 'rotating-plane',
+            spinColor: '#ffe606',
+            overlayClose: false,
+            titleBackground: '#fff7ae',
+            titleColor: ' #585004',
+            closeColor: ' #585004',
+            overlayColor: "#fff7afbb"
+        });
+    </script>
+</body>
+
+</html>
