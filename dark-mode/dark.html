@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="light.css"
+        media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)">
+    <link rel="stylesheet" href="dark.css" media="(prefers-color-scheme: dark)">
+    <style>
+        .dark{
+            position: absolute;
+            top:0;
+            right: 0;
+        }
+   #dark-mode-toggler {
+  --dark-mode-toggle-dark-icon: url("sun.svg");
+  --dark-mode-toggle-light-icon: url("moon.svg");
+  --dark-mode-toggle-icon-filter: invert(100%);
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Dark mode testing</h1>
+                <p>Lorem ipsum souvik sit amet consectetur adipisicing elit. Suscipit officiis error tempora, obcaecati
+                    sunt deserunt natus quam voluptate sapiente reprehenderit. Ut fuga quos minus provident. In aperiam
+                    ab atque fugit!
+                </p>
+            </div>
+            <div class="col-md-6">
+                <h1>Dark mode testing</h1>
+                <p>Lorem ipsum souvik sit amet consectetur adipisicing elit. Suscipit officiis error tempora, obcaecati
+                    sunt deserunt natus quam voluptate sapiente reprehenderit. Ut fuga quos minus provident. In aperiam
+                    ab atque fugit!
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="dark">
+        <dark-mode-toggle id="dark-mode-toggler"  appearance="toggle" permanent=true>
+        </dark-mode-toggle>
+    </div>
+    <!-- code from unpkg slowwww -->
+    <!-- <script type="module" src="https://unpkg.com/dark-mode-toggle"></script> -->
+    <!-- code from cdn js deliver -->
+    <script type ='module'src="https://cdn.jsdelivr.net/npm/dark-mode-toggle@0.5.1/dist/dark-mode-toggle.min.mjs"></script>
+</body>
+</html>
