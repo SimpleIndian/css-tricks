@@ -1,45 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .copy-button {
+        color: aliceblue;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        top: 7px;
+        right: 6px;
+        opacity: 0.4;
+      }
+      body {
+        max-width: 700px;
+        margin: auto;
+      }
+      pre:hover .copy-button {
+        opacity: 1;
+      }
+    </style>
+  </head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
+  <body>
+    <pre>
+<code class="language-less">@bg: transparent;
+.element {
+    & when not (@bg = fuck) {
+        background: @bg;
+    }
+}</code>
+</pre>
+    <pre>
+<code class="language-bash">
+    npm install prism
+</code>
+</pre>
 
-    <body>
-        <div class="code-block">
-            <pre>
-                <code class="language-dart foo" >
-var x = 12;
-//Document
-print.ane(x);
-//fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-                </code>
-            </pre>
-            <button class="copy-code " data-clipboard-target=".foo"><img src="clippy.svg" alt=""></button>
-        </div>
+    <pre>
+<code class="language-less">@bg: transparent;
+.element {
+    & when not (@bg = transaprent) {
+        background: @bg;
+    }
+}</code>
+</pre>
 
-        <div class="code-block">
-            <pre>
-                <code class="language-dart foo2" >
-    var x = 12;
-                </code>
-            </pre>
-            <button class="copy-code " data-clipboard-target=".foo2"><img src="clippy.svg" alt=""></button>
-        </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/prism.min.js"></script>
+    <!-- for auto loading language script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+    <script>
+      (function () {
+        // Get the elements.
+        // - the 'pre' element.
+        // - the 'div' with the 'paste-content' id.
 
+        var pre = document.getElementsByTagName("pre");
+        var pasteContent = document.getElementById("paste-content");
 
+        // Add a copy button in the 'pre' element.
+        // which only has the className of 'language-'.
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/prism.min.js"></script>
-        <!-- for auto loading language script -->
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/autoloader/prism-autoloader.min.js"></script> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/prism-dart.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
-        <script>
-            new ClipboardJS('.copy-code');
-        </script>
-    </body>
+        for (var i = 0; i < pre.length; i++) {
+          var isLanguage = pre[i].children[0].className.indexOf("language-");
 
+          if (isLanguage === 0) {
+            var button = document.createElement("button");
+            button.className = "copy-button";
+            button.textContent = "Copy";
+
+            pre[i].appendChild(button);
+          }
+        }
+
+        // Run Clipboard
+
+        const copyCode = new ClipboardJS(".copy-button", {
+          target: function (trigger) {
+            return trigger.previousElementSibling;
+          },
+        });
+
+        // On success:
+        // - Change the "Copy" text to "Copied".
+        // - Swap it to "Copy" in 2s.
+        // - Lead user to the "contenteditable" area with Velocity scroll.
+
+        copyCode.on("success", function (event) {
+          event.clearSelection();
+          event.trigger.textContent = "Copied";
+          window.setTimeout(function () {
+            event.trigger.textContent = "Copy";
+          }, 2000);
+        });
+
+        // On error (Safari):
+        // - Change the  "Press Ctrl+C to copy"
+        // - Swap it to "Copy" in 2s.
+
+        copyCode.on("error", function (event) {
+          event.trigger.textContent = 'Press "Ctrl + C" to copy';
+          window.setTimeout(function () {
+            event.trigger.textContent = "Copy";
+          }, 5000);
+        });
+      })();
+    </script>
+  </body>
 </html>

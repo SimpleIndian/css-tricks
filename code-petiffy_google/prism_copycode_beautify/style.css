@@ -1,11 +1,6 @@
-.code-block {
-    position: relative;
 
-}
 
-.copy-code img {
-    width: 22px;
-}
+
 
 .copy-code {
     cursor: pointer;
@@ -26,6 +21,7 @@
 
 pre {
     border-radius: 10px;
+    position: relative;
 }
 
 code[class*=language-],
