@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="../editor/bootstrap-grid.min.css">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                transition: 0.5s ease-in-out !important;
+
+                font-family: 'Cascadia Code', BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+
+            ::-webkit-scrollbar {
+                width: 5px;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background-color: black;
+                border-radius: 25px;
+            }
+
+            ::-webkit-scrollbar-track {
+                background-color: grey;
+            }
+
+            h1 {
+                text-align: center;
+                padding: 1.5em;
+            }
+
+            .sidebar {
+                position: absolute;
+                top: 0;
+                overflow: hidden;
+                bottom: 0;
+                left: 0;
+                width: 320px;
+                height: 100%;
+                background: white;
+                overflow-y: auto;
+                z-index: 301;
+                transform: translateX(-320px);
+            }
+
+            .sidebar-header {
+                position: sticky;
+                top: 0;
+                background: white;
+                border-bottom: 1px solid black
+            }
+
+            .sidebar-menu {
+                overflow: auto;
+            }
+
+            ul li a {
+                text-decoration: none;
+                color: black;
+            }
+
+            .menu-header {
+                border-top: 1.5px solid rgb(126, 170, 126);
+                font-size: 12px;
+            }
+
+            .menu-header-start {
+                /* border-top:2px solid rgb(126, 170, 126); */
+                font-size: 12px;
+            }
+
+            .sidebar-search {
+                border-top: 1px solid;
+            }
+
+            .side-nav-overlay {
+                background-color: rgba(0, 0, 0, 0.726);
+                height: 100%;
+                overflow: hidden;
+                position: fixed;
+                top: 0;
+                opacity: 0;
+                visibility: hidden;
+                width: 100vw;
+                transition: all 1s ease-in;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h1>
+            <span style="cursor: pointer;" onclick="openNavigation()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu" width="24" height="24"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <line x1="4" y1="8" x2="20" y2="8" />
+                    <line x1="4" y1="16" x2="20" y2="16" />
+                </svg>
+            </span>
+            This is a Sidebar Demo
+        </h1>
+        <div class="sidebar" id="side">
+            <nav>
+                <header class="sidebar-header d-flex justify-content-around  p-3" onclick="closeNavigation()">
+                    <h3 class="pr-3">MostlyFlutter</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24"
+                        height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <polyline points="15 6 9 12 15 18" />
+                    </svg>
+                </header>
+                <div class="sidebar-menu  mt-2">
+                    <ul class="d-flex flex-column justify-content-start">
+                        <li class="menu-header-start p-3">
+                            LOVE THE BEAT
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+                        <li class="menu-header p-3">
+                            LOVE THE BEAT
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+                        <li class="menu-header p-3">
+                            LOVE THE BEAT
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+                        <li class="d-flex align-items-center px-3 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path d="M11 17a2.5 2.5 0 0 0 2 0" />
+                                <path
+                                    d="M12 3C7.336 3 4.604 5.331 4.138 8.595a11.816 11.816 0 0 0 1.998 8.592 10.777 10.777 0 003.199 3.064h0c1.666.999 3.664.999 5.33 0h0a10.777 10.777 0 0 0 3.199 -3.064 11.89 11.89 0 001.998-8.592C19.396 5.33 16.664 3 12 3z" />
+                                <line x1="8" y1="11" x2="10" y2="13" />
+                                <line x1="16" y1="11" x2="14" y2="13" />
+                            </svg>
+                            <a href="#" class="pl-3">Programming Basic</a>
+                        </li>
+
+                        <li class="d-flex align-items-center sidebar-search justify-content-around  p-3 ">
+                            <a href="#">Search</a>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <circle cx="10" cy="10" r="7" />
+                                <line x1="21" y1="21" x2="15" y2="15" />
+                            </svg>
+                        </li>
+                    </ul>
+                    <div>
+            </nav>
+        </div>
+        <div class="side-nav-overlay" style="cursor: pointer;" onclick="closeNavigation()"></div>
+        <script>
+            const sideBar = document.getElementById('side');
+            const overlayNav = document.querySelector('.side-nav-overlay');
+            function closeNavigation() {
+                sideBar.style.transform = 'translateX(-320px)'
+                overlayNav.style.opacity = 0
+                overlayNav.style.visibility = 'hidden'
+
+            }
+            function openNavigation() {
+                sideBar.style.transform = 'translateX(0px)'
+                overlayNav.style.visibility = 'visible'
+                overlayNav.style.opacity = 1
+
+            }
+
+        </script>
+    </body>
+
+</html>
