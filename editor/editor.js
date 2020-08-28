@@ -1,6 +1,6 @@
-const mainEditor = document.querySelector('.editable');
-const getSavedHtml = document.querySelector('#getSavedHtml');
-const localStore = document.querySelector('.localStore');
+const mainEditor = document.querySelector(".editable");
+const getSavedHtml = document.querySelector("#getSavedHtml");
+const localStore = document.querySelector(".localStore");
 var editor = new MediumEditor(".editable", {
   toolbar: {
     /* These are the default options for the toolbar,
@@ -64,18 +64,19 @@ getRawHtmlBtn.addEventListener("click", (e) => {
   outputHolder.innerText = editor.getContent();
 });
 //add the raw html to localStorage for back up
-mainEditor.addEventListener("keyup", () => { 
-    localStorage.setItem('mainEditor', mainEditor.innerHTML);
-})
+mainEditor.addEventListener("keyup", () => {
+  localStorage.setItem("mainEditor", mainEditor.innerHTML);
+});
 //get the current
-getSavedHtml.addEventListener('click',()=> {
-    var SavedHtml = localStorage.getItem('mainEditor');
-    localStore.classList.toggle('show')
-  localStore.innerHTML = SavedHtml
-  mainEditor.innerHTML = SavedHtml
-
-})
+getSavedHtml.addEventListener("click", () => {
+  var SavedHtml = localStorage.getItem("mainEditor");
+  localStore.classList.toggle("show");
+  localStore.innerHTML = SavedHtml;
+  mainEditor.innerHTML = SavedHtml;
+});
 //prevent browser refresh
-// window.addEventListener('beforeunload', (event) => {
-//     var x = event.returnValue = `${console.log("Are you sure you want to leave?")}`
-// })
+window.addEventListener("beforeunload", (event) => {
+  var x = (event.returnValue = `${console.log(
+    "Are you sure you want to leave?"
+  )}`);
+});
