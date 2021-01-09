@@ -5,63 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/plugins/treeview/prism-treeview.min.css"
+      integrity="sha512-mp2GxyZTOONYhCjlmTtb7KkEMG2CMLRvPKyt0TVg6lqQCLdgZykwk+OsNPnQwyc+9zthzAKZOVgXV4mbGzKm3A=="
+      crossorigin="anonymous"
+    />
     <style>
-      .copy-button {
-        color: aliceblue;
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        position: absolute;
-        top: 7px;
-        right: 6px;
-        opacity: 0.4;
-      }
-      body {
-        max-width: 700px;
-        margin: auto;
-      }
-      pre:hover .copy-button {
-        opacity: 1;
-      }
+      
     </style>
   </head>
 
   <body>
     <pre>
-<code class="language-less">@bg: transparent;
-.element {
-    & when not (@bg = fuck) {
-        background: @bg;
+    <code class="language-less" >@bg: transparent;
+
+    .element {
+        & when not (@bg = fuck) {
+            background: @bg;
+        }
     }
-}</code>
-</pre>
-    <pre>
-<code class="language-bash">
-    npm install prism
-</code>
-</pre>
+
+    </code>
+    </pre>
+    <div class="code-box">
+      <p>bash</p>
+      <p>run</p>
+      <pre>
+      <code class="language-bash">
+          npm install prism
+      </code>
+      </pre>
+    </div>
 
     <pre>
-<code class="language-less">@bg: transparent;
-.element {
-    & when not (@bg = transaprent) {
-        background: @bg;
+    <code class="language-less" >@bg: transparent;
+    .element {
+        & when not (@bg = transaprent) {
+            background: @bg;
+        }
     }
-}</code>
-</pre>
+  </code>
+    </pre>
+    <pre>
+    <code class="language-dart" >
+    var x = 12;
+    print(x)
+  </code>
+    </pre>
+    <pre>
+      <code class="language-treeview">root_folder/
+      |-- a first folder/
+      |   |-- holidays.mov
+      |   |-- javascript-file.js
+      |   `-- some_picture.jpg
+      |-- documents/
+      |   |-- spreadsheet.xls
+      |   |-- manual.pdf
+      |   |-- document.docx
+      |   `-- presentation.ppt
+      |       `-- test
+      |-- empty_folder/
+      |-- going deeper/
+      |   |-- going deeper/
+      |   |   `-- going deeper/
+      |   |        `-- going deeper/
+      |   |            `-- .secret_file
+      |   |-- style.css
+      |   `-- index.html
+      |-- music and movies/
+      |   |-- great-song.mp3
+      |   |-- S01E02.new.episode.avi
+      |   |-- S01E02.new.episode.nfo
+      |   `-- track 1.cda
+      |-- .gitignore
+      |-- .htaccess
+      |-- .npmignore
+      |-- archive 1.zip
+      |-- archive 2.tar.gz
+      |-- logo.svg
+      `-- README.md
+    </code>
+  </pre>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/prism.min.js"></script>
+    <script src="prism.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/plugins/treeview/prism-treeview.min.js"
+      integrity="sha512-teBZd6vfCR96ugvYeEAmu8+GORYKniw6QpnIWAkWALOuUKw+WGvJoHqVBMy1uL7IV/8edeaPkv8laDuWAJVieQ=="
+      crossorigin="anonymous"
+    ></script>
     <!-- for auto loading language script -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+
     <script>
+      Prism.plugins.NormalizeWhitespace.setDefaults({
+        "remove-trailing": true,
+        "remove-indent": true,
+        "left-trim": true,
+        "right-trim": true,
+        /*'break-lines': 80,
+        'indent': 2,
+        'remove-initial-line-feed': false,
+        'tabs-to-spaces': 4,
+        'spaces-to-tabs': 4*/
+      });
       (function () {
         // Get the elements.
         // - the 'pre' element.
         // - the 'div' with the 'paste-content' id.
 
         var pre = document.getElementsByTagName("pre");
-        var pasteContent = document.getElementById("paste-content");
+        // var pasteContent = document.getElementById("paste-content");
 
         // Add a copy button in the 'pre' element.
         // which only has the className of 'language-'.
@@ -72,7 +126,12 @@
           if (isLanguage === 0) {
             var button = document.createElement("button");
             button.className = "copy-button";
-            button.textContent = "Copy";
+            button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clipboard" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z"/>
+            <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />
+            <rect x="9" y="3" width="6" height="4" rx="2" />
+          </svg>
+          `;
 
             pre[i].appendChild(button);
           }
@@ -93,9 +152,20 @@
 
         copyCode.on("success", function (event) {
           event.clearSelection();
-          event.trigger.textContent = "Copied";
+          event.trigger.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clipboard-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z"/>
+          <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />
+          <rect x="9" y="3" width="6" height="4" rx="2" />
+          <path d="M9 14l2 2l4 -4" />
+        </svg>
+        `;
           window.setTimeout(function () {
-            event.trigger.textContent = "Copy";
+            event.trigger.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clipboard" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z"/>
+            <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />
+            <rect x="9" y="3" width="6" height="4" rx="2" />
+          </svg>
+          `;
           }, 2000);
         });
 

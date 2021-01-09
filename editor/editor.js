@@ -74,9 +74,10 @@ getSavedHtml.addEventListener("click", () => {
   localStore.innerHTML = SavedHtml;
   mainEditor.innerHTML = SavedHtml;
 });
+
 //prevent browser refresh
-window.addEventListener("beforeunload", (event) => {
-  var x = (event.returnValue = `${console.log(
-    "Are you sure you want to leave?"
-  )}`);
-});
+// window.addEventListener("beforeunload", (event) => {
+//   var x = (event.returnValue = `${console.log(
+//     "Are you sure you want to leave?"
+//   )}`);
+// });

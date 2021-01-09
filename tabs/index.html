@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="../editor/main.css">
+        <style>
+            .tabBtn {
+                display: inline-block;
+                /* width: 100%; */
+                cursor: pointer;
+                border: 0;
+                background-color: #65a56b;
+                color: blanchedalmond;
+                font-weight: 800;
+                font-size: 25px;
+                margin: 10px 10px;
+            }
+
+            .tabBtn:hover {
+                color: darkgreen;
+                background-color: blanchedalmond;
+            }
+
+            .content-area {
+                min-height: 500px;
+            }
+
+            .tab-content {
+                animation: adanim 1s;
+            }
+
+            @keyframes adanim {
+                from {
+                    opacity: 0;
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
+
+            .active {
+                background-color: blanchedalmond;
+                color: cadetblue;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container mr-auto">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="d-flex flex-wrap">
+                        <button class="tabBtn p-3" onclick="openCity(event, 'London')">What's New on Flutter</button>
+                        <button class="tabBtn p-3" onclick="openCity(event, 'Paris')">How to Anyting</button>
+                        <button class="tabBtn p-3" onclick="openCity(event, 'Tokyo')">ui ux</button>
+                        <button class="tabBtn p-3" onclick="openCity(event, 'Tokyo')">Android</button>
+                    </div>
+                </div>
+                <div class="col-md-6 content-area">
+                    <div id="London" class="tab-content">
+                        <h3>London</h3>
+                        <p>London is the capital city of England.</p>
+                    </div>
+
+                    <div id="Paris" class="tab-content">
+                        <h3>Paris</h3>
+                        <p>Paris is the capital of France.</p>
+                    </div>
+
+                    <div id="Tokyo" class="tab-content">
+                        <h3>Tokyo</h3>
+                        <p>Tokyo is the capital of Japan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function openCity(evt, cityName) {
+                // Declare all variables
+                var i, tabcontent, tablinks;
+
+                tabcontent = document.querySelectorAll(".tab-content");
+                tablinks = document.querySelectorAll(".tabBtn");
+
+                // console.log(tabcontent)
+
+                // // Get all elements with class="tabcontent" and hide them
+                // for (i = 0; i < tabcontent.length; i++) {
+                //     tabcontent[i].style.display = "none";
+                // }
+                tabcontent.forEach(e => {
+                    e.style.display = 'none';
+                })
+                // Get all elements with class="tablinks" and remove the class "active"
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+
+                // Show the current tab, and add an "active" class to the link that opened the tab
+                document.getElementById(cityName).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+        </script>
+    </body>
+
+</html>

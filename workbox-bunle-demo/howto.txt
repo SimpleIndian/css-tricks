@@ -1,3 +1,0 @@
-in this rebuild of workbox we can use bundler to bundle the file
-just configure your service worker in sw-src.js and run parcel bundle then run npm run build to build a service worker based
-on the sw-src.js in dist

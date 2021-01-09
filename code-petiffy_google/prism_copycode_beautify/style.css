@@ -20,7 +20,7 @@
 }
 
 pre {
-    border-radius: 10px;
+    /* border-radius: 10px; */
     position: relative;
 }
 
@@ -183,4 +183,14 @@ pre[class*=language-] {
 
 .token.entity {
     cursor: help
+}
+
+.code-box p{
+    font-family: 'Cascadia Code', Courier, monospace;
+    margin-bottom: 0;
+    padding: 5px ;
+    /* border-bottom:1px solid  ; */
+}
+.code-box{
+    border: 1px solid;
 }
